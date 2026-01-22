@@ -1,0 +1,67 @@
+@noran-salm ➜ /workspaces/DTC-HW1 (main) $ docker build -t python-bash .
+[+] Building 32.0s (5/5) FINISHED                                                                          docker:default
+ => [internal] load build definition from Dockerfile                                                                 0.0s
+ => => transferring dockerfile: 74B                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/python:3.13                                                       0.3s
+ => [internal] load .dockerignore                                                                                    0.0s
+ => => transferring context: 2B                                                                                      0.0s
+ => [1/1] FROM docker.io/library/python:3.13@sha256:c8b03b4e98b39cfb180a5ea13ae5ee39039a8f75ccf52fe6d5c216eed6e1be  31.6s
+ => => resolve docker.io/library/python:3.13@sha256:c8b03b4e98b39cfb180a5ea13ae5ee39039a8f75ccf52fe6d5c216eed6e1be1  0.0s
+ => => sha256:2ca1bfae7ba8b9e2a56c1c19a2d14036cae96bf868ca154ca88bc078eaf7c376 49.29MB / 49.29MB                     1.9s
+ => => sha256:82e18c5e1c15ff34b31f1443e9327b69daaa0c1bd65a23846328fc3738c7f8f1 25.61MB / 25.61MB                     2.0s
+ => => sha256:be442a7e0d6f290b909f8da51840566e06ab51bfbea277c70fbda26c44c8259d 67.79MB / 67.79MB                     1.9s
+ => => sha256:c8b03b4e98b39cfb180a5ea13ae5ee39039a8f75ccf52fe6d5c216eed6e1be1d 10.96kB / 10.96kB                     0.0s
+ => => sha256:2eba1eeb0726ab8bf77f43808b59d93e21e77da05b7f11b4fc9a042b337ab209 2.32kB / 2.32kB                       0.0s
+ => => sha256:6b1b86f270ccdb848adf78330c7a27041a2f8e971cfd9c808e1ad503d236f9ae 6.40kB / 6.40kB                       0.0s
+ => => sha256:26d823e3848f3d74363d9b5b44f39f2d2f81a99a37d8c7fb54831a489a32e999 236.00MB / 236.00MB                   5.6s
+ => => sha256:ca4b544132020bb341843cab8bfe574164a1cdee08b40b91d816d9a4d45dcb52 6.09MB / 6.09MB                       3.2s
+ => => sha256:b6513238a015da1519f8241c3b7da75f420faf670f79599474c185fd6353361b 27.37MB / 27.37MB                     3.1s
+ => => extracting sha256:2ca1bfae7ba8b9e2a56c1c19a2d14036cae96bf868ca154ca88bc078eaf7c376                            3.8s
+ => => sha256:9b57076d00d4987fd3fd63f4f7d9ced204cbe119bc15f26a16e3d1aee233b7c3 249B / 249B                           3.4s
+ => => extracting sha256:82e18c5e1c15ff34b31f1443e9327b69daaa0c1bd65a23846328fc3738c7f8f1                            0.7s
+ => => extracting sha256:be442a7e0d6f290b909f8da51840566e06ab51bfbea277c70fbda26c44c8259d                            3.4s
+ => => extracting sha256:26d823e3848f3d74363d9b5b44f39f2d2f81a99a37d8c7fb54831a489a32e999                           13.7s
+ => => extracting sha256:ca4b544132020bb341843cab8bfe574164a1cdee08b40b91d816d9a4d45dcb52                            2.0s
+ => => extracting sha256:b6513238a015da1519f8241c3b7da75f420faf670f79599474c185fd6353361b                            0.8s
+ => => extracting sha256:9b57076d00d4987fd3fd63f4f7d9ced204cbe119bc15f26a16e3d1aee233b7c3                            0.0s
+ => exporting to image                                                                                               0.0s
+ => => exporting layers                                                                                              0.0s
+ => => writing image sha256:1ed4a7894154cf5528bf6e8354b1b0694a9d9580d1e46a8090e13a6875a858c9                         0.0s
+ => => naming to docker.io/library/python-bash                                                                       0.0s
+@noran-salm ➜ /workspaces/DTC-HW1 (main) $ docker run -it python-bash
+root@e64b3d741f01:/# python --version
+Python 3.13.11
+root@e64b3d741f01:/# pip --version
+pip 25.3 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+root@e64b3d741f01:/# \q
+bash: q: command not found
+root@e64b3d741f01:/# exit
+exit
+@noran-salm ➜ /workspaces/DTC-HW1 (main) $ wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-11.parquet
+--2026-01-22 13:53:43--  https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-11.parquet
+Resolving d37ci6vzurychx.cloudfront.net (d37ci6vzurychx.cloudfront.net)... 18.239.38.181, 18.239.38.83, 18.239.38.147, ...
+Connecting to d37ci6vzurychx.cloudfront.net (d37ci6vzurychx.cloudfront.net)|18.239.38.181|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1164775 (1.1M) [binary/octet-stream]
+Saving to: ‘green_tripdata_2025-11.parquet’
+
+green_tripdata_2025-11.parquet 100%[==================================================>]   1.11M  --.-KB/s    in 0.01s   
+
+2026-01-22 13:53:43 (97.7 MB/s) - ‘green_tripdata_2025-11.parquet’ saved [1164775/1164775]
+
+@noran-salm ➜ /workspaces/DTC-HW1 (main) $ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv
+--2026-01-22 13:54:05--  https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv
+Resolving github.com (github.com)... 140.82.121.3
+Connecting to github.com (github.com)|140.82.121.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/513814948/5a2cc2f5-b4cd-4584-9c62-a6ea97ed0e6a?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-01-22T14%3A39%3A13Z&rscd=attachment%3B+filename%3Dtaxi_zone_lookup.csv&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-01-22T13%3A38%3A25Z&ske=2026-01-22T14%3A39%3A13Z&sks=b&skv=2018-11-09&sig=CUXAZyesbSD5YO9rHnL1vqxCtSCUQu4NvEZJ6gGxEKg%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2OTA5MDM0NSwibmJmIjoxNzY5MDkwMDQ1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.YVXT1Lm_3o7s5eHDpytMm6ALtf4EKhRaUeXEfrv5JGY&response-content-disposition=attachment%3B%20filename%3Dtaxi_zone_lookup.csv&response-content-type=application%2Foctet-stream [following]
+--2026-01-22 13:54:06--  https://release-assets.githubusercontent.com/github-production-release-asset/513814948/5a2cc2f5-b4cd-4584-9c62-a6ea97ed0e6a?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-01-22T14%3A39%3A13Z&rscd=attachment%3B+filename%3Dtaxi_zone_lookup.csv&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-01-22T13%3A38%3A25Z&ske=2026-01-22T14%3A39%3A13Z&sks=b&skv=2018-11-09&sig=CUXAZyesbSD5YO9rHnL1vqxCtSCUQu4NvEZJ6gGxEKg%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2OTA5MDM0NSwibmJmIjoxNzY5MDkwMDQ1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.YVXT1Lm_3o7s5eHDpytMm6ALtf4EKhRaUeXEfrv5JGY&response-content-disposition=attachment%3B%20filename%3Dtaxi_zone_lookup.csv&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.108.133, 185.199.111.133, 185.199.110.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12322 (12K) [application/octet-stream]
+Saving to: ‘taxi_zone_lookup.csv’
+
+taxi_zone_lookup.csv           100%[==================================================>]  12.03K  --.-KB/s    in 0s      
+
+2026-01-22 13:54:06 (53.3 MB/s) - ‘taxi_zone_lookup.csv’ saved [12322/12322]
